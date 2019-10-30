@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package assume;
+
+import "google/protobuf/timestamp.proto";
+
+message AssumeRole {
+    string role_arn = 1;
+    string role_session_name = 2;
+    int32 mfa = 3;
+    int32 duration = 4;
+}
+
+message AssumeRequest {
+    AssumeRole request = 1;
+}
+
+message AssumeResponse {
+    string access_key = 1;
+    string secret_access_key = 2;
+    string session_token = 3;
+    google.protobuf.Timestamp expiration_date = 4;
+}
+
+service AssumeService {
+    // Unary
+    rpc AssumeRole (AssumeRequest) returns (AssumeResponse) {};
+}
