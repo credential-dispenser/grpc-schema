@@ -4,6 +4,8 @@ package assume;
 
 import "google/protobuf/timestamp.proto";
 
+option go_package = "assumepb";
+
 message AssumeRole {
     string role_arn = 1;
     string role_session_name = 2;
